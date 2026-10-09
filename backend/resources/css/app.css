@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: "Geologica", ui-sans-serif, system-ui, sans-serif;
+}
+@layer base {
+    html, body {
+        font-family: var(--font-sans);
+    }
+}

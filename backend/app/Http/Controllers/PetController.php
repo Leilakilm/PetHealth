@@ -13,9 +13,8 @@ class PetController extends Controller
         $pets = Pet::where('user_id', $user_id)->withCount('appointments')->get();
         $pets_id = $pets->pluck('id');
 
-        $appointments = Appointment::whereIn('pet_id', $pets_id)->with(['pet', 'doctor'])->get();
         $isAppointment = Appointment::whereIn('pet_id', $pets_id)->exists();
-        return view('pets', compact('pets', 'appointments', 'isAppointment'));
+        return view('pets', compact('pets', 'isAppointment'));
     }
     public function create(){
         return view('petEdit');

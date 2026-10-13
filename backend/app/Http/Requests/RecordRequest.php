@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RecordRequest extends FormRequest
 {
@@ -15,8 +16,8 @@ class RecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'specialization' => ['required', 'string', 'max:255', 'exists:specializations,id'],
-            'pet' => ['required', 'string', 'max:255', 'exists:pets,id'],
+            'specialization' => ['required', 'integer', 'exists:specializations,id'],
+            'pet' => ['required', 'integer', 'exists:pets,id', Rule::exists('pets', 'id')->where('user_id', auth()->id())],
             'date' => ['required', 'date', 'after:today'],
         ];
     }

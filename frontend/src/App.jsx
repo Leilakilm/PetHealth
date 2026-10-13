@@ -15,6 +15,7 @@ import RoleRoute from "./components/routes/RoleRoute.jsx";
 import Pets from "./pages/Pets.jsx";
 import PetCreate from "./pages/PetCreate.jsx";
 import Appointments from "./pages/Appointments.jsx";
+import Record from "./pages/Record.jsx";
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                             <Route path="/pets" element={<Pets />} />
                             <Route path="/pet/add" element={<PetCreate />} />
                             <Route path="/appointments" element={<Appointments />} />
+                            <Route path="/record" element={<Record />} />
                         </Route>
 
                         <Route element={<RoleRoute roles={["admin"]} />}>

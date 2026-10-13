@@ -1,4 +1,4 @@
-import Hamster from "../assets/dots/Hamster.jsx";
+import Rabbit from "../assets/dots/Hamster.jsx";
 
 const CaringBlock = () => {
     return (
@@ -103,7 +103,7 @@ const CaringBlock = () => {
                     </div>
                 </div>
                 <div></div>
-                <Hamster/>
+                <Rabbit/>
             </div>
         </section>
     )

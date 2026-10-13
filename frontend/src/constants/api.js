@@ -21,7 +21,11 @@ export const ENDPOINTS = {
         STORE: "/api/pets",
     },
     APPOINTMENTS: {
-        INDEX:   "/api/appointments",
-        CANCEL:  (id) => `/api/appointments/${id}`,
+        INDEX:  "/api/appointments",
+        STORE:  "/api/appointments",
+        CANCEL: (id) => `/api/appointments/${id}`,
+    },
+    SPECIALIZATIONS: {
+        INDEX: "/api/specializations",
     },
 };

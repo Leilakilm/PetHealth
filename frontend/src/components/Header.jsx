@@ -33,29 +33,24 @@ const Header = () => {
                         <>
                             <Link
                                 to="/pets"
-                                className="text-gray-800 hover:text-orange-600 transition"
-                            >
+                                className="text-gray-800 hover:text-orange-600 transition">
                                 Питомцы
                             </Link>
                             <button
                                 onClick={logout}
-                                className="border-orange-600 text-orange-600 border-1 hover:text-slate-800 hover:bg-slate-800 px-3 py-1 transition"
-                            >
-                                Выйти
+                                className="border-orange-600 text-orange-600 border-1 hover:text-slate-800 hover:bg-slate-800 px-3 py-1 transition">Выйти
                             </button>
                         </>
                     ) : (
                         <>
                             <Link
                                 to="/login"
-                                className="text-gray-800 hover:text-orange-600 transition"
-                            >
+                                className="text-gray-800 hover:text-orange-600 transition">
                                 Вход
                             </Link>
                             <Link
                                 to="/registration"
-                                className="border-slate-800 border-1 hover:bg-orange-600 px-3 py-1 transition"
-                            >
+                                className="border-slate-800 border-1 hover:bg-orange-600 px-3 py-1 transition">
                                 Регистрация
                             </Link>
                         </>

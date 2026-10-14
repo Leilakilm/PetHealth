@@ -11,7 +11,7 @@ const Appointments = () => {
 
     if (error) {
         return (
-            <p className="text-red-500 text-sm font-medium py-4">
+            <p className="text-red-700 text-sm font-medium py-4">
                 Ошибка загрузки: {error}
             </p>
         );
@@ -24,7 +24,7 @@ const Appointments = () => {
             {appointments.length === 0 ? (
                 <AppointmentsEmpty />
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {appointments.map((appointment) => (
                         <AppointmentCard
                             key={appointment.id}

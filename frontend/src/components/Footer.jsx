@@ -1,12 +1,14 @@
+import {Link} from "react-router-dom";
+
 const Footer = () => {
     return (
         <footer className="border-1 border-t-slate-800 border-transparent text-slate-800 text-sm">
             <div className="container mx-auto py-6">
 
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <a href="{{ route('home.index') }}" className="inline-flex items-center gap-2">
-                        <span className="font-bold text-xl tracking-tight">PetHealth</span>
-                    </a>
+                    <Link to="/" className="inline-flex items-center gap-2">
+                        <span className="font-serif font-bold text-xl tracking-tight">PetHealth</span>
+                    </Link>
                 </div>
 
                 <div className="grid py-4 grid-cols-1 md:grid-cols-12 gap-12">
@@ -24,17 +26,17 @@ const Footer = () => {
                         <h3 className="font-semibold uppercase">Сервис</h3>
                         <hr className="bg-slate-800 my-2"/>
                         <ul className="space-y-3">
-                            <li><a href=""
-                                   className="hover:text-orange-500 transition">Главная</a></li>
-                            <li><a href=""
-                                   className="hover:text-orange-500 transition">Записаться</a>
+                            <li><Link to="/"
+                                   className="hover:text-orange-500 transition">Главная</Link></li>
+                            <li><Link to="/record"
+                                   className="hover:text-orange-500 transition">Записаться</Link>
                             </li>
-                            <li><a href="" className="hover:text-orange-500 transition">История
-                                болезни</a></li>
-                            <li><a href="" className="hover:text-orange-500 transition">Зарегистрировать
-                                питомца</a></li>
-                            <li><a href="" className="hover:text-orange-500 transition">Мои
-                                питомцы</a></li>
+                            <li><Link to="/appointments" className="hover:text-orange-500 transition">История
+                                болезни</Link></li>
+                            <li><Link to="/pet/add" className="hover:text-orange-500 transition">Зарегистрировать
+                                питомца</Link></li>
+                            <li><Link to="/pets" className="hover:text-orange-500 transition">Мои
+                                питомцы</Link></li>
                         </ul>
                     </div>
                     <div className="md:col-span-3">

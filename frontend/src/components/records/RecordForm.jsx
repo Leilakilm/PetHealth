@@ -5,10 +5,12 @@ import Loader from "../ui/Loader.jsx";
 import { useRecordForm } from "../../hooks/useRecordForm.js";
 import { useRecordData } from "../../hooks/useRecordData.js";
 
-const selectClass = (error) => `
-  focus:text-orange-600 w-full py-2.5 border transition
-  focus:outline-none focus:border-b-orange-600
-  border-slate-200 border-b-slate-300 focus:border-transparent
+const fieldClass = (error) => `
+  w-full py-2.5 px-3 bg-transparent
+  border border-slate-300
+  focus:outline-none focus:border-orange-600
+  text-sm focus:text-orange-600 text-slate-800
+  transition
   ${error ? "border-red-500" : ""}
 `;
 
@@ -26,16 +28,20 @@ const RecordForm = ({ onSuccess }) => {
 
     return (
         <div className="w-full">
-            <h5 className="mb-4 text-sm w-full md:w-2/3 font-medium text-slate-500">
-                Заполните заявку на приём, чтобы мы могли подтвердить вашу запись.
-            </h5>
+            <header className="border-b border-slate-300 pb-4 mb-6">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+                    Заявка
+                </p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                    Заполните заявку на приём, чтобы мы могли подтвердить вашу запись.
+                </p>
+            </header>
 
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                     <label
                         htmlFor="specialization"
-                        className="block text-sm font-medium text-slate-800 mb-1"
-                    >
+                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
                         Направление
                     </label>
                     <select
@@ -43,8 +49,7 @@ const RecordForm = ({ onSuccess }) => {
                         name="specialization"
                         value={values.specialization}
                         onChange={handleChange}
-                        className={selectClass(errors.specialization)}
-                    >
+                        className={fieldClass(errors.specialization)}>
                         <option value="" disabled>
                             Выберите направление..
                         </option>
@@ -60,7 +65,9 @@ const RecordForm = ({ onSuccess }) => {
                 </div>
 
                 <div>
-                    <label htmlFor="pet" className="block text-sm font-medium text-slate-800 mb-1">
+                    <label
+                        htmlFor="pet"
+                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
                         Питомец
                     </label>
                     <select
@@ -68,8 +75,7 @@ const RecordForm = ({ onSuccess }) => {
                         name="pet"
                         value={values.pet}
                         onChange={handleChange}
-                        className={selectClass(errors.pet)}
-                    >
+                        className={fieldClass(errors.pet)}>
                         <option value="" disabled>
                             {hasPets
                                 ? "Выберите питомца.."
@@ -85,8 +91,10 @@ const RecordForm = ({ onSuccess }) => {
                         <p className="text-red-500 text-xs mt-1">{errors.pet}</p>
                     )}
                     {!hasPets && (
-                        <p className="text-slate-500 text-sm mt-1">
-                            <Link className="text-orange-600 underline" to="/pet/add">
+                        <p className="text-sm text-slate-600 mt-2">
+                            <Link
+                                className="underline text-slate-800 hover:text-orange-600 transition"
+                                to="/pet/add">
                                 Регистрация питомца
                             </Link>
                         </p>
@@ -94,7 +102,9 @@ const RecordForm = ({ onSuccess }) => {
                 </div>
 
                 <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-slate-800 mb-1">
+                    <label
+                        htmlFor="date"
+                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
                         Желаемое время приёма
                     </label>
                     <Input
@@ -105,6 +115,7 @@ const RecordForm = ({ onSuccess }) => {
                         onChange={handleChange}
                         error={errors.date}
                         required
+                        className="bg-transparent px-3 py-2.5 border border-slate-300  text-sm"
                     />
                     {errors.date && (
                         <p className="text-red-500 text-xs mt-1">{errors.date}</p>
@@ -114,8 +125,7 @@ const RecordForm = ({ onSuccess }) => {
                 {errors._global && (
                     <p className="text-red-500 text-sm">{errors._global}</p>
                 )}
-
-                <Button type="submit" disabled={loading || !hasPets}>
+                <Button type="submit" disabled={loading}>
                     {loading ? "Отправка..." : "Записаться"}
                 </Button>
             </form>

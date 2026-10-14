@@ -9,10 +9,15 @@ const PetForm = ({ onSuccess }) => {
 
     return (
         <div className="w-full">
-            <h5 className="mb-4 text-sm w-full md:w-2/3 font-medium text-slate-500">
-                Заполните карточку питомца, чтобы он появился в списке доступных для
-                записи на приём.
-            </h5>
+            <header className="border-b border-slate-300 pb-4 mb-6">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+                    Регистрация питомца
+                </p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                    Заполните карточку питомца, чтобы он появился в списке доступных для
+                    записи на приём.
+                </p>
+            </header>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 {petFields.map((field) => (

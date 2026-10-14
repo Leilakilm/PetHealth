@@ -1,46 +1,48 @@
 import { Link } from "react-router-dom";
 
 const PetCard = ({ pet }) => (
-    <div className="lg:gap-10 border-1 p-4 border-slate-600">
-        <div>
-            <div>
-                <p className="text-sm w-full md:w-1/2 lg:w-2/5 font-medium text-slate-500 mb-1">
-                    Питомец
+    <article className="relative border border-slate-800 bg-transparent text-slate-800 p-6 flex flex-col">
+        <header className="border-b border-slate-300 pb-3 mb-4">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
+                Питомец
+            </p>
+            <h4 className="text-3xl font-serif leading-none text-slate-800">
+                {pet.name}
+            </h4>
+        </header>
+
+        <div className="grid grid-cols-2 border-b border-slate-300 mb-4">
+            <div className="border-r border-slate-300 pr-3 py-3">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
+                    Вид
                 </p>
-                <h4 className="text-slate-800 text-xl font-bold">{pet.name}</h4>
+                <p className="text-sm text-slate-700">{pet.species}</p>
             </div>
-
-            <div className="grid grid-cols-2 gap-2">
-                <div>
-                    <div className="my-3">
-                        <p className="font-semibold block text-sm text-slate-800 mb-1">Вид:</p>
-                        <p className="text-slate-500">{pet.species}</p>
-                    </div>
-                    <div className="my-3">
-                        <p className="font-semibold block text-sm text-slate-800 mb-1">Возраст:</p>
-                        <p className="text-slate-500">{pet.age} лет</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div className="my-3">
-                        <Link
-                            to="/record"
-                            className="font-semibold block text-sm text-orange-600 underline"
-                        >
-                            Записать на приём
-                        </Link>
-                    </div>
-                    <div className="my-3">
-                        <p className="font-semibold block text-sm text-slate-800 mb-1">
-                            Записей на приём:
-                        </p>
-                        <p className="text-slate-500">{pet.appointments_count}</p>
-                    </div>
-                </div>
+            <div className="pl-3 py-3">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
+                    Возраст
+                </p>
+                <p className="text-sm text-slate-700">{pet.age} лет</p>
             </div>
         </div>
-    </div>
+
+        <div className="grid grid-cols-1 border-b border-slate-300 mb-4">
+            <div className="py-3">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
+                    Записей на прием
+                </p>
+                <p className="text-sm text-slate-700">{pet.appointments_count}</p>
+            </div>
+        </div>
+
+        <div className="mt-auto flex flex-col gap-2">
+            <Link
+                to="/record"
+                className="block text-center border border-slate-800 text-slate-800 text-xs tracking-[0.2em] uppercase py-2.5 transition hover:bg-slate-800 hover:text-white">
+                Записать на прием
+            </Link>
+        </div>
+    </article>
 );
 
 export default PetCard;

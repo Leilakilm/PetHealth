@@ -11,7 +11,7 @@ const Pets = () => {
 
     if (error) {
         return (
-            <p className="text-red-500 text-sm font-medium py-4">
+            <p className="text-red-600 text-sm font-medium py-4">
                 Ошибка загрузки: {error}
             </p>
         );
@@ -20,7 +20,6 @@ const Pets = () => {
     return (
         <div>
             <PetsIntro />
-
             {pets.length === 0 ? (
                 <PetsEmpty />
             ) : (

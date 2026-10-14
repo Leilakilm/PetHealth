@@ -2,14 +2,21 @@ import {Link} from "react-router-dom";
 
 const RegistrationIntro = () => (
     <div>
-        <h3 className="mb-4 text-3xl font-bold text-slate-800">Регистрация</h3>
-        <p className="mt-2 text-sm md:w-2/3 font-medium text-slate-500 mb-2">
+        <header>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+                страница регистрации
+            </p>
+            <h2 className="font-serif text-5xl leading-tight text-slate-800">
+                Регистрация
+            </h2>
+        </header>
+        <p className="w-full md:w-2/3 text-sm text-slate-600 leading-relaxed my-2">
             На этой странице вы создаете личный кабинет, чтобы записывать питомцев
             к ветеринару онлайн. Укажите имя, email, телефон и придумайте пароль —
             это займет меньше минуты, а регистрация полностью бесплатна. После создания аккаунта вы сможете добавить
             питомцев, выбирать врача и направление, а также управлять своими записями.
         </p>
-        <p className="mb-3 text-slate-500">
+        <p className="w-full md:w-2/3 text-sm text-slate-600 leading-relaxed">
             Уже есть аккаунт?{" "}
             <Link className="text-orange-600 underline" to="/login">Вход</Link>
         </p>

@@ -10,7 +10,7 @@ const Record = () => {
     };
 
     return (
-        <section className="grid grid-cols-1 md:grid-cols-2">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <RecordIntro />
             <RecordForm onSuccess={handleSuccess} />
         </section>

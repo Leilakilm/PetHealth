@@ -9,11 +9,15 @@ const LoginForm = ({ onSuccess }) => {
 
     return (
         <div className="w-full">
-            <h5 className="mb-4 text-sm md:w-2/3 font-medium text-slate-500">
-                Войдите в личный кабинет, чтобы записывать питомцев на приём и управлять
-                своими записями.
-            </h5>
-
+            <header className="border-b border-slate-300 pb-4 mb-6">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+                    Форма авторизации
+                </p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                    Войдите в личный кабинет, чтобы записывать питомцев на приём и управлять
+                    своими записями.
+                </p>
+            </header>
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 {loginFields.map((field) => (
                     <FormField

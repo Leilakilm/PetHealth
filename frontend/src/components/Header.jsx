@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <header className="text-slate-800 border-b-1 border-b-slate-500">
             <div className="container mx-auto py-4 flex items-center justify-between">
-                <Link to="/" className="text-2xl font-bold m-0 text-shadow-slate-800">
+                <Link to="/" className="font-serif text-2xl font-bold m-0 text-shadow-slate-800">
                     PetHealth
                 </Link>
 

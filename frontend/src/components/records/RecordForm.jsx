@@ -1,22 +1,32 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Label from "../ui/Label.jsx";
+import Select from "../ui/Select.jsx";
 import Input from "../ui/Input.jsx";
 import Button from "../ui/Button.jsx";
 import Loader from "../ui/Loader.jsx";
+import SlotPicker from "../ui/SlotPicker.jsx";
 import { useRecordForm } from "../../hooks/useRecordForm.js";
 import { useRecordData } from "../../hooks/useRecordData.js";
-
-const fieldClass = (error) => `
-  w-full py-2.5 px-3 bg-transparent
-  border border-slate-300
-  focus:outline-none focus:border-orange-600
-  text-sm focus:text-orange-600 text-slate-800
-  transition
-  ${error ? "border-red-500" : ""}
-`;
+import { useDoctors } from "../../hooks/useDoctors.js";
+import { useSlots } from "../../hooks/useSlots.js";
 
 const RecordForm = ({ onSuccess }) => {
     const { specializations, pets, loading: dataLoading, error: dataError } = useRecordData();
-    const { values, errors, loading, handleChange, handleSubmit } = useRecordForm(onSuccess);
+    const { values, errors, loading, handleChange, handleSubmit, setValue } = useRecordForm(onSuccess);
+
+    const { doctors, loading: doctorsLoading } = useDoctors(values.specialization);
+    const { slots, loading: slotsLoading } = useSlots(values.doctor, values.date);
+
+
+    useEffect(() => {
+        setValue("doctor", "");
+        setValue("slot", "");
+    }, [values.specialization, setValue]);
+
+    useEffect(() => {
+        setValue("slot", "");
+    }, [values.date, setValue]);
 
     if (dataLoading) return <Loader />;
 
@@ -39,54 +49,93 @@ const RecordForm = ({ onSuccess }) => {
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
-                    <label
-                        htmlFor="specialization"
-                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
-                        Направление
-                    </label>
-                    <select
+                    <Label htmlFor="specialization">Направление</Label>
+                    <Select
                         id="specialization"
                         name="specialization"
                         value={values.specialization}
-                        onChange={handleChange}
-                        className={fieldClass(errors.specialization)}>
-                        <option value="" disabled>
-                            Выберите направление..
-                        </option>
+                        onChange={handleChange}>
+                        <option value="" disabled>Выберите направление..</option>
                         {specializations.map((s) => (
-                            <option key={s.id} value={s.id}>
-                                {s.name}
-                            </option>
+                            <option key={s.id} value={s.id}>{s.name}</option>
                         ))}
-                    </select>
+                    </Select>
                     {errors.specialization && (
                         <p className="text-red-500 text-xs mt-1">{errors.specialization}</p>
                     )}
                 </div>
 
                 <div>
-                    <label
-                        htmlFor="pet"
-                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
-                        Питомец
-                    </label>
-                    <select
+                    <Label htmlFor="doctor">Врач</Label>
+                    <Select
+                        id="doctor"
+                        name="doctor"
+                        value={values.doctor}
+                        onChange={handleChange}
+                        disabled={!values.specialization || doctorsLoading}
+                        className="w-full py-2.5 px-3 bg-transparent border border-slate-300 focus:outline-none focus:border-orange-600 text-sm text-slate-800 transition disabled:opacity-50">
+                        <option value="" disabled>
+                            {doctorsLoading
+                                ? "Загрузка..."
+                                : !values.specialization
+                                    ? "Сначала выберите направление"
+                                    : "Выберите врача.."}
+                        </option>
+                        {doctors.map((d) => (
+                            <option key={d.id} value={d.id}>{d.fio}</option>
+                        ))}
+                    </Select>
+                    {errors.doctor && (
+                        <p className="text-red-500 text-xs mt-1">{errors.doctor}</p>
+                    )}
+                </div>
+
+                <div>
+                    <Label htmlFor="date">Дата приёма</Label>
+                    <Input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={values.date}
+                        onChange={handleChange}
+                        disabled={!values.doctor}
+                        error={errors.date}
+                        className="disabled:opacity-50"
+                    />
+                    {errors.date && (
+                        <p className="text-red-500 text-xs mt-1">{errors.date}</p>
+                    )}
+                </div>
+
+                <div>
+                    <Label>Время приёма</Label>
+                    <SlotPicker
+                        slots={slots}
+                        value={values.slot}
+                        onChange={(slot) => setValue("slot", slot)}
+                        loading={slotsLoading}
+                        error={errors.slot}
+                    />
+                    {errors.slot && (
+                        <p className="text-red-500 text-xs mt-1">{errors.slot}</p>
+                    )}
+                </div>
+
+                <div>
+                    <Label htmlFor="pet">Питомец</Label>
+                    <Select
                         id="pet"
                         name="pet"
                         value={values.pet}
                         onChange={handleChange}
-                        className={fieldClass(errors.pet)}>
+                        className="w-full py-2.5 px-3 bg-transparent border border-slate-300 focus:outline-none focus:border-orange-600 text-sm text-slate-800 transition">
                         <option value="" disabled>
-                            {hasPets
-                                ? "Выберите питомца.."
-                                : "У вас пока нет зарегистрированных питомцев"}
+                            {hasPets ? "Выберите питомца.." : "У вас пока нет питомцев"}
                         </option>
                         {pets.map((pet) => (
-                            <option key={pet.id} value={pet.id}>
-                                {pet.name}
-                            </option>
+                            <option key={pet.id} value={pet.id}>{pet.name}</option>
                         ))}
-                    </select>
+                    </Select>
                     {errors.pet && (
                         <p className="text-red-500 text-xs mt-1">{errors.pet}</p>
                     )}
@@ -101,31 +150,11 @@ const RecordForm = ({ onSuccess }) => {
                     )}
                 </div>
 
-                <div>
-                    <label
-                        htmlFor="date"
-                        className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
-                        Желаемое время приёма
-                    </label>
-                    <Input
-                        type="date"
-                        id="date"
-                        name="date"
-                        value={values.date}
-                        onChange={handleChange}
-                        error={errors.date}
-                        required
-                        className="bg-transparent px-3 py-2.5 border border-slate-300  text-sm"
-                    />
-                    {errors.date && (
-                        <p className="text-red-500 text-xs mt-1">{errors.date}</p>
-                    )}
-                </div>
-
                 {errors._global && (
                     <p className="text-red-500 text-sm">{errors._global}</p>
                 )}
-                <Button type="submit" disabled={loading}>
+
+                <Button type="submit" disabled={loading || !hasPets}>
                     {loading ? "Отправка..." : "Записаться"}
                 </Button>
             </form>

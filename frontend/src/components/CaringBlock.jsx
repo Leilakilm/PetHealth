@@ -2,12 +2,12 @@ import Rabbit from "../assets/dots/Hamster.jsx";
 
 const CaringBlock = () => {
     return (
-        <section id="caring" className="my-10 px-5 md:px-0">
-            <h3 className="font-serif text-3xl font-bold m-0 text-slate-800 scroll-mt-10">Забота без лишних хлопот<span
+        <section id="caring" className="my-10 md:px-0">
+            <h3 className="font-accent font-bold text-3xl font-bold m-0 text-slate-800 scroll-mt-10">Забота без лишних хлопот<span
                 className="text-orange-600">.</span></h3>
             <p className="mt-2 block text-sm w-full md:4/5 lg:w-1/3 text-slate-600">Мы собрали все, что важно при выборе
                 ветеринара: опытных специалистов, честный подход и удобный сервис записи.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-5">
                 <div className="p-4 flex flex-col gap-25 justify-between border-1 border-slate-300">
                     <div className="flex justify-between">
                         <p className="text-lg font-bold text-slate-800">01<span className="text-orange-600">.</span></p>

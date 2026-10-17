@@ -1,10 +1,9 @@
 import FormField from "../ui/FormField.jsx";
 import Button from "../ui/Button.jsx";
-import { petFields } from "../../constants/petFields.js";
-import { usePetForm } from "../../hooks/usePetForm.js";
+import {usePetForm} from "../../hooks/usePetForm.js";
 
-const PetForm = ({ onSuccess }) => {
-    const { values, errors, loading, handleChange, handleSubmit } =
+const PetForm = ({onSuccess}) => {
+    const {values, errors, loading, handleChange, handleSubmit} =
         usePetForm(onSuccess);
 
     return (
@@ -20,22 +19,18 @@ const PetForm = ({ onSuccess }) => {
             </header>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {petFields.map((field) => (
-                    <FormField
-                        key={field.name}
-                        id={field.name}
-                        name={field.name}
-                        type={field.type}
-                        label={field.label}
-                        placeholder={field.placeholder}
-                        value={values[field.name] ?? ""}
-                        onChange={handleChange}
-                        error={errors[field.name]}
-                        required={field.required}
-                        autoFocus={field.autoFocus}
-                    />
-                ))}
+                <FormField id="name" name="name" label="Имя" type="text"
+                           autoFocus={true}
+                           value={values.name} onChange={handleChange}
+                           error={errors.name} placeholder="Введите имя питомца.."/>
 
+                <FormField id="species" name="species" label="Вид" type="text"
+                           value={values.species} onChange={handleChange}
+                           error={errors.species} placeholder="Введите вид питомца.."/>
+
+                <FormField id="age" name="age" label="Возраст" type="number"
+                           value={values.age} onChange={handleChange}
+                           error={errors.age} placeholder="Введите возраст питомца.."/>
                 {errors._global && (
                     <p className="text-red-500 text-sm">{errors._global}</p>
                 )}

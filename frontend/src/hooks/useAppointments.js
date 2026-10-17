@@ -33,9 +33,8 @@ export const useAppointments = () => {
                     a.id === id ? { ...a, status: AppointmentStatus.REJECTED } : a
                 )
             );
-        } catch (err) {
-            console.error("Cancel failed:", err);
-            throw err;
+        } catch (error) {
+            console.error("Cancel failed:", error);
         } finally {
             setCancellingId(null);
         }

@@ -1,6 +1,6 @@
 const Hamster = () => {
     return (
-        <div className="text-slate-500 select-none ms-auto">
+        <div className="hidden md:block text-slate-500 select-none ms-auto">
         <pre>
 {`⠀⠀⠀⠀⠀⠀⠀⢀⣤⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⢠⠎⠀⠀⢸⠀⢀⣠⠔⠒⢢⠀⠀⠀

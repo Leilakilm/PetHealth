@@ -2,8 +2,8 @@ import Hummingbird from "../assets/dots/Hummingbird.jsx";
 
 const AdmissionDirectionsBlock = () => {
     return (
-        <div className="my-10 px-5 md:px-0">
-            <h3 className="font-serif text-3xl font-bold m-0 text-slate-800 scroll-mt-10"
+        <div className="mt-10 md:px-0">
+            <h3 className="font-accent text-3xl font-bold m-0 text-slate-800 scroll-mt-10"
                 id="admissionDirections">Направления
                 приема<span className="text-orange-600">.</span>
             </h3>
@@ -24,44 +24,44 @@ const AdmissionDirectionsBlock = () => {
                         <Hummingbird/>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 mt-4 md:mt-0 md:gap-4">
                     <div
-                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">01<span className="text-orange-600">.</span></h6>
-                        <h6 className="font-bold text-slate-800">Терапия</h6>
-                        <p className="text-slate-600">Осмотр, диагностика, назначения и общее наблюдение за состоянием питомца.</p>
+                        <h6 className="font-bold text-slate-800 ">Терапия</h6>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Осмотр, диагностика, назначения и общее наблюдение за состоянием питомца.</p>
                     </div>
                     <div
-                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">02<span className="text-orange-600">.</span></h6>
                         <h6 className="font-bold text-slate-800">Вакцинация</h6>
-                        <p className="text-slate-600">Плановые прививки, ревакцинация и подбор индивидуального графика.</p>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Плановые прививки, ревакцинация и подбор индивидуального графика.</p>
                     </div>
                     <div
-                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">03<span className="text-orange-600">.</span></h6>
                         <h6 className="font-bold text-slate-800">Стоматология</h6>
-                        <p className="text-slate-600">Чистка зубов, удаление зубного камня и лечение заболеваний полости рта.</p>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Чистка зубов, удаление зубного камня и лечение заболеваний полости рта.</p>
                     </div>
                     <div
-                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">04<span className="text-orange-600">.</span></h6>
                         <h6 className="font-bold text-slate-800">Хирургия</h6>
-                        <p className="text-slate-600">Плановые и срочные операции, стерилизация и послеоперационное наблюдение.</p>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Плановые и срочные операции, стерилизация и послеоперационное наблюдение.</p>
                     </div>
                     <div
-                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-t-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">05<span className="text-orange-600">.</span></h6>
                         <h6 className="font-bold text-slate-800">Дерматология</h6>
-                        <p className="text-slate-600">Диагностика и лечение кожных заболеваний, аллергий и выпадения шерсти.</p>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Диагностика и лечение кожных заболеваний, аллергий и выпадения шерсти.</p>
                     </div>
                     <div
-                        className="border-1 border-transparent border-y-slate-800 py-3 grid grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
+                        className="border-1 border-transparent border-y-slate-800 py-3 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] gap-1 md:gap-2 lg:gap-10">
                         <h6 className="font-bold text-slate-800">06<span className="text-orange-600">.</span></h6>
                         <h6 className="font-bold text-slate-800">Офтальмология</h6>
-                        <p className="text-slate-600">Осмотр глаз, лечение воспалений и подбор терапии при нарушениях зрения.</p>
+                        <p className="text-slate-600 col-span-full md:col-span-1">Осмотр глаз, лечение воспалений и подбор терапии при нарушениях зрения.</p>
                     </div>
-                    <p className="block text-sm w-full md:w-4/5 text-slate-600">Это лишь часть направлений, с которыми
+                    <p className="block text-sm w-full mt-4 md:mt-0 md:w-4/5 text-slate-600">Это лишь часть направлений, с которыми
                         работают наши специалисты. Полный список доступен на странице записи на приём, где вы сможете
                         выбрать нужное направление и сразу подобрать свободного врача.</p>
                 </div>

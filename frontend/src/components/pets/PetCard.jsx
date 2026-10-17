@@ -6,7 +6,7 @@ const PetCard = ({ pet }) => (
             <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
                 Питомец
             </p>
-            <h4 className="text-3xl font-serif leading-none text-slate-800">
+            <h4 className="text-3xl font-accent font-bold leading-none text-slate-800">
                 {pet.name}
             </h4>
         </header>

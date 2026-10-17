@@ -28,4 +28,14 @@ export const ENDPOINTS = {
     SPECIALIZATIONS: {
         INDEX: "/api/specializations",
     },
+    DOCTORS: {
+        INDEX: "/api/doctors",
+        SLOTS: (id) => `/api/doctors/${id}/slots`,
+    },
+    ADMIN: {
+        APPOINTMENTS: {
+            INDEX:  "/api/admin/appointments",
+            UPDATE: (id) => `/api/admin/appointments/${id}`,
+        },
+    },
 };

@@ -4,8 +4,8 @@ const PetsIntro = () => (
             <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
                 Страница моих питомцев
             </p>
-            <h2 className="font-serif text-5xl leading-tight text-slate-800">
-                Мои питомцы
+            <h2 className="font-accent font-bold text-5xl leading-tight text-slate-800">
+                Мои питомцы<span className="text-orange-600">.</span>
             </h2>
         </header>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

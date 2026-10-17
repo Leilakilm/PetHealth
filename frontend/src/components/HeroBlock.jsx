@@ -1,7 +1,7 @@
 const HeroBlock = () => {
     return (
         <section id="hero">
-            <div className="mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-stretch">
+            <div className="mb-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-stretch">
                 <div className={"border-1 border-transparent border-b-slate-300 pb-4"}>
                     <h6 className={"text-slate-500 text-sm uppercase"}>{"{ 01 }"} Направление</h6>
                     <div className={"mt-3"}>
@@ -36,7 +36,7 @@ const HeroBlock = () => {
                     className="col-span-1 md:col-span-2 flex flex-col border-1 border-transparent md:pb-10 md:border-b-slate-600 justify-between h-full">
                     <p className="pb-2 block text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">Главная</p>
                     <div>
-                        <h3 className="font-serif text-5xl leading-tight text-slate-800 font-bold m-0  lg:w-4/5">Ветеринар рядом с вами<span
+                        <h3 className="font-accent font-bold text-3xl md:text-5xl leading-tight text-slate-800 m-0  lg:w-4/5">Ветеринар рядом с вами<span
                             className="text-orange-600">.</span> Онлайн-запись
                             <br/> за 2 минуты</h3>
                         <p className="mt-2 block text-md w-full md:w-2/3  text-slate-600 leading-relaxed">Зарегистрируйте

@@ -4,8 +4,8 @@ const AppointmentsIntro = () => (
             <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
                 Личный кабинет
             </p>
-            <h2 className="font-serif text-5xl leading-tight text-slate-800">
-                История болезней и записи к врачам
+            <h2 className="font-accent font-bold text-5xl leading-tight text-slate-800">
+                История болезней и записи к врачам<span className="text-orange-600">.</span>
             </h2>
         </header>
 

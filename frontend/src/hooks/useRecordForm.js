@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { validate } from "../lib/validate.js";
 import { mapApiErrors } from "../lib/mapApiErrors.js";
 import { recordRules } from "../constants/recordRules.js";
@@ -6,8 +6,10 @@ import { createAppointment } from "../api/appointments.js";
 
 const INITIAL = {
     specialization: "",
-    pet: "",
+    doctor: "",
     date: "",
+    slot: "",
+    pet: "",
 };
 
 export const useRecordForm = (onSuccess) => {
@@ -15,11 +17,16 @@ export const useRecordForm = (onSuccess) => {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = useCallback((e) => {
         const { name, value } = e.target;
         setValues((v) => ({ ...v, [name]: value }));
         setErrors((prev) => ({ ...prev, [name]: undefined }));
-    };
+    }, []);
+
+    const setValue = useCallback((name, value) => {
+        setValues((v) => ({ ...v, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,19 +41,26 @@ export const useRecordForm = (onSuccess) => {
         setLoading(true);
         try {
             const data = await createAppointment({
-                specialization: Number(values.specialization),
-                pet:            Number(values.pet),
-                date:           values.date,
+                doctor_id: Number(values.doctor),
+                pet_id:    Number(values.pet),
+                date:      `${values.date} ${values.slot}:00`,
             });
             setValues({ ...INITIAL });
             setErrors({});
             onSuccess?.(data);
-        } catch (err) {
-            setErrors(mapApiErrors(err));
+        } catch (error) {
+            setErrors(mapApiErrors(error));
         } finally {
             setLoading(false);
         }
     };
 
-    return { values, errors, loading, handleChange, handleSubmit };
+    return {
+        values,
+        errors,
+        loading,
+        handleChange,
+        handleSubmit,
+        setValue,
+    };
 };

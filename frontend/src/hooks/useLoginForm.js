@@ -36,8 +36,8 @@ export const useLoginForm = (onSuccess) => {
             setValues({ ...INITIAL });
             setErrors({});
             onSuccess?.(data);
-        } catch (err) {
-            setErrors(mapApiErrors(err));
+        } catch (error) {
+            setErrors(mapApiErrors(error));
         } finally {
             setLoading(false);
         }

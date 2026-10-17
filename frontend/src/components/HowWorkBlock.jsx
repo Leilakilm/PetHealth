@@ -1,7 +1,7 @@
 const HowWorkBlock = () => {
     return (
-        <section className="my-10 px-5 md:px-0">
-            <h3 className="font-serif text-3xl font-bold m-0 text-slate-800 scroll-mt-10" id="howTtWorks">Как это работает<span
+        <section className="my-10 md:px-0">
+            <h3 className="font-accent text-3xl font-bold m-0 text-slate-800 scroll-mt-10" id="howTtWorks">Как это работает<span
                 className="text-orange-600">.</span>
             </h3>
             <p className="mt-2 mb-1 block text-sm w-full md:w-4/5  text-slate-600">Четыре простых шага от регистрации до приёма.</p>
@@ -15,8 +15,8 @@ const HowWorkBlock = () => {
                         сопровождается коротким пояснением, поэтому вы сразу поймёте, что именно нужно сделать.</p>
                 </div>
                 <div className="lg:mx-auto">
-                    <div className="grid grid-cols-[auto_1fr] gap-5">
-                        <div className="flex flex-col items-center gap-2 ">
+                    <div className=" grid grid-cols-[auto_1fr] gap-5">
+                        <div className="hidden md:flex flex-col items-center gap-2 ">
                             <a href=""
                                className="border-slate-800 border-2 font-bold px-4 py-2 rounded-sm hover:text-orange-600 hover:border-orange-600">
                                 1

@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-    --font-geologica: "Geologica", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Geologica", ui-sans-serif, system-ui, sans-serif;
+    --font-accent: "Playfair Display", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
     html, body {
-        font-family: var(--font-geologica);
+        font-family: var(--font-sans);
     }
 
     body {

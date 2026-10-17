@@ -7,7 +7,7 @@ const Footer = () => {
 
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <Link to="/" className="inline-flex items-center gap-2">
-                        <span className="font-serif font-bold text-xl tracking-tight">PetHealth</span>
+                        <span className="font-accent font-bold text-xl tracking-tight">PetHealth</span>
                     </Link>
                 </div>
 

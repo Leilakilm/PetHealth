@@ -1,10 +1,9 @@
 import FormField from "../ui/FormField.jsx";
 import Button from "../ui/Button.jsx";
-import { loginFields } from "../../constants/loginFields.js";
-import { useLoginForm } from "../../hooks/useLoginForm.js";
+import {useLoginForm} from "../../hooks/useLoginForm.js";
 
-const LoginForm = ({ onSuccess }) => {
-    const { values, errors, loading, handleChange, handleSubmit } =
+const LoginForm = ({onSuccess}) => {
+    const {values, errors, loading, handleChange, handleSubmit} =
         useLoginForm(onSuccess);
 
     return (
@@ -19,21 +18,14 @@ const LoginForm = ({ onSuccess }) => {
                 </p>
             </header>
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {loginFields.map((field) => (
-                    <FormField
-                        key={field.name}
-                        id={field.name}
-                        name={field.name}
-                        type={field.type}
-                        label={field.label}
-                        placeholder={field.placeholder}
-                        value={values[field.name] ?? ""}
-                        onChange={handleChange}
-                        error={errors[field.name]}
-                        required={field.required}
-                    />
-                ))}
+                <FormField id="email" name="email" label="Email" type="email"
+                           autoFocus={true}
+                           value={values.email} onChange={handleChange}
+                           error={errors.email} placeholder="Введите ваш email.."/>
 
+                <FormField id="password" name="password" label="Пароль" type="password"
+                           value={values.password} onChange={handleChange}
+                           error={errors.password} placeholder="Введите пароль.."/>
                 {errors._global && (
                     <p className="text-red-500 text-sm">{errors._global}</p>
                 )}

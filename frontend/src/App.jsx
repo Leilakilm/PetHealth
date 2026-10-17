@@ -5,8 +5,6 @@ import MainLayout from "./layouts/MainLayout.jsx";
 import Main from "./pages/Main.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Registration from "./pages/Auth/Registration.jsx";
-import Profile from "./pages/Profile.jsx";
-import AdminDashboard from "./pages/Admin/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 import GuestRoute from "./components/routes/GuestRoute.jsx";
@@ -16,6 +14,7 @@ import Pets from "./pages/Pets.jsx";
 import PetCreate from "./pages/PetCreate.jsx";
 import Appointments from "./pages/Appointments.jsx";
 import Record from "./pages/Record.jsx";
+import AdminAppointments from "./pages/Admin/Appointments.jsx";
 
 function App() {
     return (
@@ -31,15 +30,14 @@ function App() {
                         </Route>
 
                         <Route element={<ProtectedRoute />}>
-                            <Route path="/profile" element={<Profile />} />
                             <Route path="/pets" element={<Pets />} />
                             <Route path="/pet/add" element={<PetCreate />} />
                             <Route path="/appointments" element={<Appointments />} />
                             <Route path="/record" element={<Record />} />
                         </Route>
 
-                        <Route element={<RoleRoute roles={["admin"]} />}>
-                            <Route path="/admin" element={<AdminDashboard />} />
+                        <Route element={<RoleRoute roles={["Админ"]} />}>
+                            <Route path="/admin/appointments" element={<AdminAppointments />} />
                         </Route>
 
                         <Route path="*" element={<NotFound />} />

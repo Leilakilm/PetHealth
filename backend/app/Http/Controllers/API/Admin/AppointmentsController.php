@@ -11,16 +11,34 @@ use Illuminate\Validation\Rule;
 
 class AppointmentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $appointments = Appointment::all();
+            $query =  Appointment::with(['pet.user', 'doctor.specialization']);
+
+            if ($status = $request->query('status')) {
+                $query->where('status', $status);
+            }
+
+            $appointments = $query->get();
+
+            $priority = [
+              StatusEnum::new->value => 1,
+              StatusEnum::waiting->value => 2,
+              StatusEnum::finished->value => 3,
+              StatusEnum::rejected->value => 4,
+            ];
+
+            $appointments = $appointments->sortBy(function ($appointment) use ($priority) {
+                return $priority[$appointment->status] ?? 999;
+            })->values();
+
             return response()->json([
                 'success' => true,
                 'message' => 'Список заявок получен',
                 'data' => $appointments
-            ], 200);
-        } catch (\Exception $error) {
+            ]);
+        } catch (\Throwable $error) {
             return response()->json([
                 'success' => false,
                 'message' => $error->getMessage()
@@ -34,7 +52,7 @@ class AppointmentsController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Прием уже был отменен'
-            ], 500);
+            ], 422);
         }
         try {
             $data = $request->validated();
@@ -44,9 +62,10 @@ class AppointmentsController extends Controller
             ]);
             return response()->json([
                 'success' => true,
-                'message' => 'Статус заявки успешно изменен'
-            ], 200);
-        } catch (\Exception $error) {
+                'message' => 'Статус заявки успешно изменен',
+                'data' => $appointment->fresh(['pet.user', 'doctor.specialization'])
+            ]);
+        } catch (\Throwable $error) {
             return response()->json([
                 'success' => false,
                 'message' => $error->getMessage()

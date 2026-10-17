@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppointmentStatus } from "../../constants/appointmentStatus.js";
+import Button from "../ui/Button.jsx";
 
 const formatDate = (value) => {
     const d = new Date(value);
@@ -28,7 +29,7 @@ const AppointmentCard = ({ appointment, cancelling, onCancel }) => {
                 <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-1">
                     Питомец
                 </p>
-                <h4 className="text-3xl font-serif leading-none text-slate-800">
+                <h4 className="text-3xl font-accent font-bold leading-none text-slate-800">
                     {appointment.pet?.name}
                 </h4>
             </header>
@@ -93,13 +94,13 @@ const AppointmentCard = ({ appointment, cancelling, onCancel }) => {
           </span>
                 )}
                 {!isRejected && (
-                    <button
+                    <Button
                         type="button"
                         disabled={cancelling}
                         onClick={() => onCancel(appointment.id)}
-                        className="block w-full border border-red-700 text-red-700 text-xs tracking-[0.2em] uppercase py-2.5 transition hover:bg-red-700 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+                        className=" !border-red-700 !text-red-700 transition !hover:bg-red-700 !hover:text-white !disabled:opacity-50 !disabled:cursor-not-allowed">
                         {cancelling ? "Отмена..." : "Отменить запись"}
-                    </button>
+                    </Button>
                 )}
             </div>
         </article>

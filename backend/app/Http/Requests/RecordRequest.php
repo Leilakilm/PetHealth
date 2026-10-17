@@ -16,9 +16,9 @@ class RecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'specialization' => ['required', 'integer', 'exists:specializations,id'],
-            'pet' => ['required', 'integer', 'exists:pets,id', Rule::exists('pets', 'id')->where('user_id', auth()->id())],
-            'date' => ['required', 'date', 'after:today'],
+            'doctor_id' => ['required', 'integer', 'exists:doctors,id'],
+            'pet_id' => ['required', 'integer', Rule::exists('pets', 'id')->where('user_id', auth()->id())],
+            'date' => ['required', 'date', 'after:now'],
         ];
     }
 }

@@ -9,26 +9,28 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Pet;
 use App\Models\Specialization;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Logging\OpenTestReporting\Status;
 
 class RecordController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         try {
             $specializations = Specialization::all();
             $doctors = Doctor::all();
             $pets = Pet::where('user_id', Auth::id())->get();
 
             return response()->json([
-               'success' => true,
-               'message' => 'Успешно получены данные для записи',
-               'data' => [
-                   'specializations' => $specializations,
-                   'doctors' => $doctors,
-                   'pets' => $pets
-               ]
+                'success' => true,
+                'message' => 'Успешно получены данные для записи',
+                'data' => [
+                    'specializations' => $specializations,
+                    'doctors' => $doctors,
+                    'pets' => $pets
+                ]
             ], 200);
 
 
@@ -40,20 +42,40 @@ class RecordController extends Controller
         }
 
     }
-    public function store(RecordRequest $request){
+
+    public function store(RecordRequest $request)
+    {
         try {
             $data = $request->validated();
-            $doctor_id = Doctor::where('specialization_id', $data['specialization'])->first()->id;
-            Appointment::create([
-                'doctor_id' => $doctor_id,
-                'pet_id' => $data['pet'],
-                'date' => $data['date'],
-                'status' => StatusEnum::new->value,
+
+            $date = Carbon::parse($data['date']);
+
+            $exists = Appointment::where('doctor_id', $data['doctor_id'])
+                ->where('date', $date)
+                ->where('status', '!=', StatusEnum::rejected->value)
+                ->exists();
+
+            if ($exists) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Это время уже занято',
+                    'errors' => ['date' => ['Это время уже занято, выберите другое']],
+                ], 422);
+            }
+
+            $appointment = Appointment::create([
+                'doctor_id' => $data['doctor_id'],
+                'pet_id' => $data['pet_id'],
+                'date' => $date,
+                'status' => StatusEnum::new->value
             ]);
+
             return response()->json([
                 'success' => true,
-                'message' => 'Запись на прием ждет подтверждения'
-            ], 202);
+                'message' => 'Заявка создана',
+                'data' => $appointment,
+            ], 201);
+
         } catch (\Exception $error) {
             return response()->json([
                 'success' => false,

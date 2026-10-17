@@ -8,7 +8,6 @@ export const usePets = () => {
 
     useEffect(() => {
         let cancelled = false;
-
         const load = async () => {
             setLoading(true);
             setError(null);

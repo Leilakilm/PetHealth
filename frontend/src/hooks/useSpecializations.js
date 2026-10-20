@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSpecializationsForDoctor } from "../api/adminDoctors.js";
+import {mapApiErrors} from "../lib/mapApiErrors.js";
 
 export const useSpecializations = () => {
     const [specializations, setSpecializations] = useState([]);
@@ -13,8 +14,8 @@ export const useSpecializations = () => {
             .then((res) => {
                 if (!cancelled) setSpecializations(res.data ?? []);
             })
-            .catch((err) => {
-                if (!cancelled) setError(err.message ?? "Не удалось загрузить специализации");
+            .catch((error) => {
+                if (!cancelled) setError(mapApiErrors(error));
             })
             .finally(() => {
                 if (!cancelled) setLoading(false);

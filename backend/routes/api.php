@@ -55,7 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::prefix('doctors')->group(function () {
             Route::delete('/{doctor}', [DoctorsController::class, 'destroy']);
-            Route::post('/create', [DoctorsController::class, 'store']);
+            Route::post('/store', [DoctorsController::class, 'store']);
         });
     });
 });

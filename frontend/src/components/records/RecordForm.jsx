@@ -8,14 +8,14 @@ import Loader from "../ui/Loader.jsx";
 import SlotPicker from "../ui/SlotPicker.jsx";
 import { useRecordForm } from "../../hooks/useRecordForm.js";
 import { useRecordData } from "../../hooks/useRecordData.js";
-import { useDoctors } from "../../hooks/useDoctors.js";
 import { useSlots } from "../../hooks/useSlots.js";
+import {useSpecializationDoctors} from "../../hooks/useSpecializationDoctors.js";
 
 const RecordForm = ({ onSuccess }) => {
     const { specializations, pets, loading: dataLoading, error: dataError } = useRecordData();
     const { values, errors, loading, handleChange, handleSubmit, setValue } = useRecordForm(onSuccess);
 
-    const { doctors, loading: doctorsLoading } = useDoctors(values.specialization);
+    const { doctors, loading: doctorsLoading } = useSpecializationDoctors(values.specialization);
     const { slots, loading: slotsLoading } = useSlots(values.doctor, values.date);
 
 

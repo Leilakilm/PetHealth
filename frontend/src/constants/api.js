@@ -39,7 +39,7 @@ export const ENDPOINTS = {
         },
         DOCTORS: {
             DELETE: (id) => `/api/admin/doctors/${id}`,
-            STORE: "/api/admin/doctors/create"
+            STORE: "/api/admin/doctors"
         }
     },
 };

@@ -6,12 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DoctorRequest;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use Illuminate\Http\Request;
 
 class DoctorsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Doctor::query()->where('isAvailable', 1)->with('specialization')->get();
+        $query = Doctor::query()->where('isAvailable', 1)->with('specialization');
+
+        if ($request->filled('specialization')) {
+            $query->where('specialization_id', $request->query('specialization'));
+        }
+
+        $data = $query->get();
 
         $formattedData = $data->map(function ($doctor) {
             return [

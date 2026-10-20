@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPets } from "../api/pets.js";
+import {mapApiErrors} from "../lib/mapApiErrors.js";
 
 export const usePets = () => {
     const [pets, setPets] = useState([]);
@@ -14,8 +15,8 @@ export const usePets = () => {
             try {
                 const data = await getPets();
                 if (!cancelled) setPets(data.data ?? []);
-            } catch (err) {
-                if (!cancelled) setError(err.message ?? "Не удалось загрузить питомцев");
+            } catch (error) {
+                if (!cancelled) setError(mapApiErrors(error));
             } finally {
                 if (!cancelled) setLoading(false);
             }

@@ -47,7 +47,7 @@ const Pets = () => {
 
     if (error) {
         return (
-            <p className="text-red-600 text-sm font-medium py-4">
+            <p className="text-danger text-sm font-medium py-4">
                 Ошибка загрузки, попробуйте позже
             </p>
         );
@@ -61,12 +61,9 @@ const Pets = () => {
             <PetsIntro/>
 
             {hasPets && (
-                <div className="border-b border-slate-300 pb-8 mb-8">
-                    <div className="flex flex-wrap items-end justify-between gap-6">
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400">
-                            Фильтры
-                        </p>
-
+                <div className="border-b border-ink pb-8 mb-8">
+                    <div className="flex justify-between items-center border-b border-line py-4">
+                        <span className="text-[10px] tracking-[0.3em] uppercase font-bold">Фильтры</span>
                         {hasActiveFilters && (
                             <button
                                 type="button"
@@ -75,10 +72,12 @@ const Pets = () => {
                                     setName("");
                                     setAge("");
                                 }}
-                                className="text-xs tracking-[0.2em] uppercase text-slate-500 border-b border-slate-300 hover:text-orange-600 hover:border-orange-600 transition pb-2">
+                                className="text-[10px] tracking-[0.3em] uppercase font-bold hover:text-accent hover:border-accent transition">
                                 Сбросить
                             </button>
                         )}
+                    </div>
+                    <div className="flex flex-wrap items-end justify-between gap-6">
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                         <div className="flex flex-col">
@@ -136,7 +135,7 @@ const Pets = () => {
                 <PetsEmpty/>
             ) : filtered.length === 0 ? (
                 <div className="border border-slate-300 p-8 text-center">
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+                    <p className="text-[10px] tracking-[0.2em] uppercase mb-2">
                         Ничего не найдено
                     </p>
                     <p className="text-sm text-slate-600">

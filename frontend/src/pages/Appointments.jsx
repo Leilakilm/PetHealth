@@ -38,7 +38,7 @@ const Appointments = () => {
 
     if (error) {
         return (
-            <p className="text-red-700 text-sm font-medium py-4">
+            <p className="text-danger text-sm font-medium py-4">
                 Ошибка загрузки: {error}
             </p>
         );
@@ -51,11 +51,9 @@ const Appointments = () => {
         <div>
             <AppointmentsIntro/>
             {hasAppointments && (
-                <div className="border-b border-slate-300 pb-8 mb-8">
-                    <div className="flex flex-wrap items-end justify-between gap-6">
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400">
-                            Фильтры
-                        </p>
+                <div className="border-b pb-8 mb-8">
+                    <div className="flex justify-between items-center border-b border-line py-4">
+                        <span className="text-[10px] tracking-[0.3em] uppercase font-bold">Фильтры</span>
 
                         {hasActiveFilters && (
                             <button
@@ -64,8 +62,7 @@ const Appointments = () => {
                                     setStatus("");
                                     setDateOrder("asc");
                                 }}
-                                className="text-xs tracking-[0.2em] uppercase text-slate-500 border-b border-slate-300 hover:text-orange-600 hover:border-orange-600 transition pb-2"
-                            >
+                                className="text-[10px] tracking-[0.3em] uppercase font-bold hover:text-accent hover:border-accent transition">
                                 Сбросить
                             </button>
                         )}

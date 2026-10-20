@@ -1,5 +1,5 @@
 const AppointmentsEmpty = () => (
-    <p className="block text-sm font-medium text-slate-500 mb-1">
+    <p className="block text-sm font-medium mb-1">
         У вас пока нет записей
     </p>
 );

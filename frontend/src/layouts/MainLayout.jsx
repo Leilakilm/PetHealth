@@ -6,7 +6,7 @@ const MainLayout = () => {
     return (
         <>
             <Header/>
-            <main className={"my-10 text-slate-800 container mx-auto flex-1"}>
+            <main className={"my-10 text-ink container mx-auto flex-1"}>
                 <Outlet/>
             </main>
             <Footer/>

@@ -1,6 +1,6 @@
 const Hummingbird = () => {
     return (
-        <div className="hidden md:block text-slate-500 select-none">
+        <div className="hidden md:block text-dark-green select-none">
                             <pre>{`
 ⠀⠀⠀⠀⠠⣀⠑⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⢀⡀⠤⡙⠄⢡⡀⠘⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀

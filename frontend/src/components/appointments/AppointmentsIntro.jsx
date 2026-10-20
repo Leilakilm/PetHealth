@@ -1,20 +1,20 @@
+import Label from "../ui/Label.jsx";
+
 const AppointmentsIntro = () => (
     <div className="mb-8">
-        <header className="border-b border-slate-300 pb-4 mb-6">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+        <header className="border-b border-ink pb-4 mb-6">
+            <p className="font-bold text-[10px] tracking-[0.2em] uppercase mb-2">
                 Личный кабинет
             </p>
-            <h2 className="font-accent font-bold text-5xl leading-tight text-slate-800">
-                История болезней и записи к врачам<span className="text-orange-600">.</span>
+            <h2 className="font-accent font-bold text-5xl leading-tight">
+                История болезней и записи к врачам<span className="text-accent">.</span>
             </h2>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
-                    Основное
-                </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <Label>Основное</Label>
+                <p className="text-sm leading-relaxed">
                     В этом разделе отображается полная история посещений ветеринарной
                     клиники для всех ваших питомцев. Здесь вы можете отслеживать статус
                     текущих записей, просматривать данные о прошедших приёмах, а также
@@ -23,10 +23,8 @@ const AppointmentsIntro = () => (
             </div>
 
             <div>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
-                    Важно
-                </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <Label>Важно</Label>
+                <p className="text-sm leading-relaxed">
                     Если вы не нашли нужную запись или заметили ошибку в данных,
                     пожалуйста, свяжитесь с администратором клиники.
                 </p>

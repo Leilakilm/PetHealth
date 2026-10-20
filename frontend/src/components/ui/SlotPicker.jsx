@@ -1,13 +1,13 @@
 const SlotPicker = ({slots, value, onChange, loading, error}) => {
     if (loading) {
         return (
-            <p className="text-sm text-slate-500">Загрузка слотов...</p>
+            <p className="text-sm">Загрузка слотов...</p>
         );
     }
 
     if (!slots.length) {
         return (
-            <p className="text-sm text-slate-500">
+            <p className="text-sm">
                 На этот день нет свободных слотов
             </p>
         );
@@ -24,10 +24,10 @@ const SlotPicker = ({slots, value, onChange, loading, error}) => {
                         onClick={() => onChange(slot)}
                         className={`px-3 py-1.5 border text-sm tracking-[0.1em] transition
                         ${active
-                            ? "border-orange-600  text-orange-600"
-                            : "border-slate-300 text-slate-700 hover:border-orange-600 hover:text-orange-600"
+                            ? "border-accent  text-accent"
+                            : "border-ink hover:border-accent hover:text-accent"
                         }
-                        ${error ? "border-red-600" : ""}`}>
+                        ${error ? "border-danger" : ""}`}>
                         {slot}
                     </button>
                 );

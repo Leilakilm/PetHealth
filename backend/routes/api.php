@@ -53,9 +53,9 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::patch('/{appointment}', [AdminAppointmentsController::class, 'update']);
         });
 
-        Route::prefix('doctors')->group(function () {
-            Route::get('/', [DoctorsController::class, 'index']);
-            Route::post('/create', [DoctorsController::class, 'store']);
-        });
+//        Route::prefix('doctors')->group(function () {
+//            Route::get('/', [DoctorsController::class, 'index']);
+//            Route::post('/create', [DoctorsController::class, 'store']);
+//        });
     });
 });

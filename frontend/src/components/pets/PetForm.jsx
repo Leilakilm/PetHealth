@@ -8,11 +8,11 @@ const PetForm = ({onSuccess}) => {
 
     return (
         <div className="w-full">
-            <header className="border-b border-slate-300 pb-4 mb-6">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+            <header className="border-b pb-4 mb-6">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-ink/80 mb-2">
                     Регистрация питомца
                 </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm leading-relaxed">
                     Заполните карточку питомца, чтобы он появился в списке доступных для
                     записи на приём.
                 </p>

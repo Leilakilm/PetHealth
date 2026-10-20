@@ -31,18 +31,18 @@ const RecordForm = ({ onSuccess }) => {
     if (dataLoading) return <Loader />;
 
     if (dataError) {
-        return <p className="text-red-500 text-sm">{dataError}</p>;
+        return <p className="text-danger text-sm">{dataError}</p>;
     }
 
     const hasPets = pets.length > 0;
 
     return (
         <div className="w-full">
-            <header className="border-b border-slate-300 pb-4 mb-6">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-slate-400 mb-2">
+            <header className="border-b border-ink pb-4 mb-6">
+                <p className="text-[10px] tracking-[0.2em] text-ink/80 uppercase mb-2">
                     Заявка
                 </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm leading-relaxed">
                     Заполните заявку на приём, чтобы мы могли подтвердить вашу запись.
                 </p>
             </header>
@@ -61,7 +61,7 @@ const RecordForm = ({ onSuccess }) => {
                         ))}
                     </Select>
                     {errors.specialization && (
-                        <p className="text-red-500 text-xs mt-1">{errors.specialization}</p>
+                        <p className="text-danger text-xs mt-1">{errors.specialization}</p>
                     )}
                 </div>
 
@@ -72,8 +72,7 @@ const RecordForm = ({ onSuccess }) => {
                         name="doctor"
                         value={values.doctor}
                         onChange={handleChange}
-                        disabled={!values.specialization || doctorsLoading}
-                        className="w-full py-2.5 px-3 bg-transparent border border-slate-300 focus:outline-none focus:border-orange-600 text-sm text-slate-800 transition disabled:opacity-50">
+                        disabled={!values.specialization || doctorsLoading}>
                         <option value="" disabled>
                             {doctorsLoading
                                 ? "Загрузка..."
@@ -86,7 +85,7 @@ const RecordForm = ({ onSuccess }) => {
                         ))}
                     </Select>
                     {errors.doctor && (
-                        <p className="text-red-500 text-xs mt-1">{errors.doctor}</p>
+                        <p className="text-danger text-xs mt-1">{errors.doctor}</p>
                     )}
                 </div>
 
@@ -103,7 +102,7 @@ const RecordForm = ({ onSuccess }) => {
                         className="disabled:opacity-50"
                     />
                     {errors.date && (
-                        <p className="text-red-500 text-xs mt-1">{errors.date}</p>
+                        <p className="text-danger text-xs mt-1">{errors.date}</p>
                     )}
                 </div>
 
@@ -117,7 +116,7 @@ const RecordForm = ({ onSuccess }) => {
                         error={errors.slot}
                     />
                     {errors.slot && (
-                        <p className="text-red-500 text-xs mt-1">{errors.slot}</p>
+                        <p className="text-danger text-xs mt-1">{errors.slot}</p>
                     )}
                 </div>
 
@@ -127,8 +126,7 @@ const RecordForm = ({ onSuccess }) => {
                         id="pet"
                         name="pet"
                         value={values.pet}
-                        onChange={handleChange}
-                        className="w-full py-2.5 px-3 bg-transparent border border-slate-300 focus:outline-none focus:border-orange-600 text-sm text-slate-800 transition">
+                        onChange={handleChange}>
                         <option value="" disabled>
                             {hasPets ? "Выберите питомца.." : "У вас пока нет питомцев"}
                         </option>
@@ -137,12 +135,12 @@ const RecordForm = ({ onSuccess }) => {
                         ))}
                     </Select>
                     {errors.pet && (
-                        <p className="text-red-500 text-xs mt-1">{errors.pet}</p>
+                        <p className="text-danger text-xs mt-1">{errors.pet}</p>
                     )}
                     {!hasPets && (
                         <p className="text-sm text-slate-600 mt-2">
                             <Link
-                                className="underline text-slate-800 hover:text-orange-600 transition"
+                                className="underline  hover:text-accent transition"
                                 to="/pet/add">
                                 Регистрация питомца
                             </Link>

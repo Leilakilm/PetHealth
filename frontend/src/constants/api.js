@@ -37,5 +37,9 @@ export const ENDPOINTS = {
             INDEX:  "/api/admin/appointments",
             UPDATE: (id) => `/api/admin/appointments/${id}`,
         },
+        DOCTORS: {
+            DELETE: (id) => `/api/admin/doctors/${id}`,
+            STORE: "/api/admin/doctors/create"
+        }
     },
 };

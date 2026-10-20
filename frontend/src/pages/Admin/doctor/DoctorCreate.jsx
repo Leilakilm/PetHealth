@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import DoctorIntro from "../../components/admin/doctor/DoctorFormInfo.jsx";
-import DoctorForm from "../../components/admin/doctor/DoctorForm.jsx";
+import DoctorForm from "../../../components/admin/doctor/DoctorForm.jsx";
+import DoctorFormInfo from "../../../components/admin/doctor/DoctorFormInfo.jsx";
 
 const PetCreate = () => {
     const navigate = useNavigate();
 
     const handleSuccess = () => {
-        navigate("/admin/appointments");
+        navigate("/admin/doctors");
     };
 
     return (
         <section className="grid grid-cols-1 md:grid-cols-2">
-            <DoctorIntro />
+            <DoctorFormInfo />
             <DoctorForm onSuccess={handleSuccess}/>
-
         </section>
     );
 };

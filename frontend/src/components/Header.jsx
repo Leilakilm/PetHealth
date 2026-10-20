@@ -17,9 +17,17 @@ const Header = () => {
                 Главная
             </Link>
             {isAdmin ? (
-                <Link to="/admin/appointments" className="hover:text-accent transition py-2">
-                    Админ-панель
-                </Link>
+                <>
+                    <Link to="/admin/appointments" className="hover:text-accent transition py-2">
+                        Админ-панель
+                    </Link>
+                    <Link to="/admin/doctors" className="hover:text-accent transition py-2">
+                        Специалисты
+                    </Link>
+                    <Link to="/admin/doctor/add" className="hover:text-accent transition py-2">
+                        Регистрация специалиста
+                    </Link>
+                </>
             ) : (
                 <>
                     <Link to="/record" className="hover:text-accent transition py-2">

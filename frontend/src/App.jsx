@@ -15,6 +15,8 @@ import PetCreate from "./pages/PetCreate.jsx";
 import Appointments from "./pages/Appointments.jsx";
 import Record from "./pages/Record.jsx";
 import AdminAppointments from "./pages/Admin/Appointments.jsx";
+import Doctors from "./pages/Admin/doctor/Doctors.jsx";
+import DoctorCreate from "./pages/Admin/doctor/DoctorCreate.jsx";
 
 function App() {
     return (
@@ -38,6 +40,8 @@ function App() {
 
                         <Route element={<RoleRoute roles={["Админ"]} />}>
                             <Route path="/admin/appointments" element={<AdminAppointments />} />
+                            <Route path="/admin/doctors" element={<Doctors />} />
+                            <Route path="/admin/doctor/add" element={<DoctorCreate />} />
                         </Route>
 
                         <Route path="*" element={<NotFound />} />

@@ -9,3 +9,7 @@ export const createDoctor = (payload) =>
         method: "POST",
         body: payload,
     });
+export const deleteDoctor = (id) =>
+    request(ENDPOINTS.ADMIN.DOCTORS.DELETE(id), {
+        method: "DELETE",
+    });

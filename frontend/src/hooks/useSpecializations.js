@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSpecializations } from "../api/adminDoctors.js";
+import { getSpecializationsForDoctor } from "../api/adminDoctors.js";
 
 export const useSpecializations = () => {
     const [specializations, setSpecializations] = useState([]);
@@ -9,7 +9,7 @@ export const useSpecializations = () => {
     useEffect(() => {
         let cancelled = false;
 
-        getSpecializations()
+        getSpecializationsForDoctor()
             .then((res) => {
                 if (!cancelled) setSpecializations(res.data ?? []);
             })

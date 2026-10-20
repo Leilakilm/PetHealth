@@ -1,6 +1,19 @@
 import CaringCard from "./CaringCard.jsx";
+import Loader from "../ui/Loader.jsx";
 
-const CaringBlock = () => {
+const CaringBlock = ({doctors, loading, error}) => {
+
+    if (error) {
+        return (
+            <p className="text-danger text-sm font-medium py-4">
+                Ошибка загрузки: {error}
+            </p>
+        );
+    }
+    if (loading) return <Loader/>;
+
+    const hasDoctors = doctors.length > 0
+    const limitDoctors = doctors.slice(0, 8)
     return (
         <section id="caring" className="my-10 md:px-0">
             <div className="flex justify-between items-center border-b border-line mb-4 py-4">
@@ -10,16 +23,20 @@ const CaringBlock = () => {
                 доверить<span className={"text-accent"}>.</span></h3>
             <p className="mt-2 block text-sm w-full md:4/5 lg:w-1/3 ">В нашей команде только опытные врачи узкого
                 профиля. Ознакомьтесь с их квалификацией и выберите того, кому доверите здоровье своего питомца.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-5">
+            {!hasDoctors && (
+                <p className="mt-2 block text-sm text-danger w-full md:4/5 lg:w-1/3 ">Активных докторов для записи пока
+                    нет:(</p>
+            )}
 
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
-                <CaringCard/>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-5">
+                {hasDoctors && (
+                    limitDoctors.map((d) => (
+                        <CaringCard
+                            key={d.id}
+                            doctor={d}
+                        />
+                    ))
+                )}
             </div>
         </section>
     )

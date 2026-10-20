@@ -1,36 +1,28 @@
-import { useEffect, useState } from "react";
-import { getDoctors } from "../api/doctors.js";
+import { useCallback, useEffect, useState } from "react";
+import {getDoctors} from "../api/doctors.js";
 
-export const useDoctors = (specializationId) => {
+
+
+export const useDoctors = () => {
     const [doctors, setDoctors] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const load = useCallback(async () => {
+        setLoading(true);
+        try {
+            const res = await getDoctors();
+            setDoctors(res.data ?? []);
+        } catch (err) {
+            setError(err.message || "Ошибка загрузки");
+        } finally {
+            setLoading(false);
+        }
+    }, []);
 
     useEffect(() => {
-        if (!specializationId) {
-            setDoctors([]);
-            return;
-        }
+        load();
+    }, [load]);
 
-        let cancelled = false;
-        setLoading(true);
-
-        getDoctors(specializationId)
-            .then((res) => {
-                console.log("useDoctors got:", res);
-                if (!cancelled) setDoctors(res.data ?? []);
-            })
-            .catch((error) => {
-                console.error("useDoctors error:", error);
-                if (!cancelled) setDoctors([]);
-            })
-            .finally(() => {
-                if (!cancelled) setLoading(false);
-            });
-
-        return () => {
-            cancelled = true;
-        };
-    }, [specializationId]);
-
-    return { doctors, loading };
+    return { doctors, loading, error, reload: load };
 };

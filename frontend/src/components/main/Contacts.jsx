@@ -2,11 +2,11 @@ import Label from "../ui/Label.jsx";
 
 const Contacts = () => {
     return (
-        <section className="my-10 md:px-0">
+        <section id={"contacts"} className="my-10 md:px-0">
             <div className="flex justify-between items-center border-b border-line mb-4 py-4">
                 <span className="text-[10px] tracking-[0.3em] uppercase font-bold">Как нас найти</span>
             </div>
-            <h3 className="font-accent text-3xl font-bold m-0 text-dark-green scroll-mt-10" id="contacts">Контакты<span
+            <h3 className="font-accent text-3xl font-bold m-0 text-dark-green scroll-mt-10">Контакты<span
                 className="text-accent">.</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">

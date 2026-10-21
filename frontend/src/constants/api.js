@@ -25,6 +25,9 @@ export const ENDPOINTS = {
         STORE:  "/api/appointments",
         CANCEL: (id) => `/api/appointments/${id}`,
     },
+    FEEDBACK: {
+        STORE: (id) => `/api/feedback/${id}`,
+    },
     SPECIALIZATIONS: {
         INDEX: "/api/specializations",
     },

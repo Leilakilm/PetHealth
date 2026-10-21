@@ -32,7 +32,7 @@ const PetForm = ({onSuccess}) => {
                            value={values.age} onChange={handleChange}
                            error={errors.age} placeholder="Введите возраст питомца.."/>
                 {errors._global && (
-                    <p className="text-red-500 text-sm">{errors._global}</p>
+                    <p className="text-danger text-sm">{errors._global}</p>
                 )}
 
                 <Button type="submit" disabled={loading}>

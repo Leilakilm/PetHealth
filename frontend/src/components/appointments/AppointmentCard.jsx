@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { AppointmentStatus } from "../../constants/appointmentStatus.js";
+import {Link} from "react-router-dom";
+import {AppointmentStatus} from "../../constants/appointmentStatus.js";
 import Button from "../ui/Button.jsx";
 
 const formatDate = (value) => {
@@ -19,7 +19,7 @@ const formatTime = (value) => {
     });
 };
 
-const AppointmentCard = ({ appointment, cancelling, onCancel }) => {
+const AppointmentCard = ({appointment, cancelling, onCancel}) => {
     const isFinished = appointment.status === AppointmentStatus.FINISHED;
     const isRejected = appointment.status === AppointmentStatus.REJECTED;
 
@@ -80,18 +80,15 @@ const AppointmentCard = ({ appointment, cancelling, onCancel }) => {
                     </p>
                 </div>
             </div>
-
             <div className="mt-auto flex flex-col gap-2">
                 {isFinished ? (
                     <Link
-                        to={`/feedback/${appointment.id}`}
+                        to={`/feedback/${Number(String(appointment.id).trim())}`}
                         className="block text-center border text-xs tracking-[0.2em] uppercase py-2.5 transition hover:border-accent hover:text-accent">
                         Оставить отзыв
                     </Link>
                 ) : (
-                    <span className="block text-center border text-xs tracking-[0.2em] uppercase py-2.5 cursor-not-allowed">
-            Оставить отзыв
-          </span>
+                    <span className="block text-center border text-xs tracking-[0.2em] uppercase py-2.5 cursor-not-allowed">Оставить отзыв</span>
                 )}
                 {!isRejected && (
                     <Button

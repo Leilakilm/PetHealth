@@ -15,7 +15,7 @@ const CaringBlock = ({doctors, loading, error}) => {
     const hasDoctors = doctors.length > 0
     const limitDoctors = doctors.slice(0, 8)
     return (
-        <section id="caring" className="my-10 md:px-0">
+        <section id="doctors" className="my-10 md:px-0">
             <div className="flex justify-between items-center border-b border-line mb-4 py-4">
                 <span className="text-[10px] tracking-[0.3em] uppercase font-bold">Наша команда</span>
             </div>

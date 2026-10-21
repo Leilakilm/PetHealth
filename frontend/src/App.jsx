@@ -17,6 +17,7 @@ import Record from "./pages/Record.jsx";
 import AdminAppointments from "./pages/Admin/Appointments.jsx";
 import Doctors from "./pages/Admin/doctor/Doctors.jsx";
 import DoctorCreate from "./pages/Admin/doctor/DoctorCreate.jsx";
+import Feedback from "./pages/Feedback.jsx";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/pet/add" element={<PetCreate />} />
                             <Route path="/appointments" element={<Appointments />} />
                             <Route path="/record" element={<Record />} />
+                            <Route path="/feedback/:id" element={<Feedback />} />
                         </Route>
 
                         <Route element={<RoleRoute roles={["Админ"]} />}>
